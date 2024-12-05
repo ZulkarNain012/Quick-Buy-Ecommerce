@@ -1,0 +1,434 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<style>
+  .navbar {
+    display: none;
+  }
+</style>
+<body>
+  <div class="back sticky-top"></div>
+  <h4>POST YOUR AD</h4>
+  <div class="centre">
+    <div class="row item-info">
+      <div class="hr"></div>
+      <b class="include">INCLUDE SOME DETAILS</b><br />
+      <span class="input">
+        <% if(car){ %>
+        <form
+          method="POST"
+          action="/items/cars/<%=car._id%>?_method=PUT"
+          novalidate
+          class="needs-validation"
+        >
+          <input type="hidden" name="car[category]" value="<%=car.category%>" />
+          <div class="mb-3">
+            <label for="brand" class="form-label label-text">Brand *</label>
+            <input
+              name="car[brand]"
+              value="<%=car.brand %>"
+              type="text"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback size">
+              Brand is mandatory. Please complete the required field.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="model" class="form-label label-text">Model *</label>
+            <input
+              name="car[model]"
+              value="<%=car.model %>"
+              type="text"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback size">
+              Model is mandatory. Please complete the required field.
+            </div>
+          </div>
+          <% if(car.category=="Cars"){ %>
+          <div class="mb-3">
+            <label for="variant" class="form-label label-text">Variant *</label>
+            <input
+              name="car[variant]"
+              value="<%=car.variant %>"
+              type="text"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback size">
+              Variant is mandatory. Please complete the required field.
+            </div>
+          </div>
+          <% } %>
+          <div class="mb-3">
+            <label for="year" class="form-label label-text">Year *</label>
+            <input
+              name="car[year]"
+              value="<%=car.year %>"
+              class="form-control"
+              type="number"
+              required
+            />
+            <div class="invalid-feedback size">
+              Year is mandatory. Please complete the required field.
+            </div>
+          </div>
+          <% if(car.category=="Cars"){ %>
+          <div class="mb-3">
+            <label class="label-text">Fuel *</label><br />
+            <br />
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[fuel]"
+              id="option5"
+              autocomplete="off"
+              value="CNG & Hybrids"
+              required
+            />
+            <label class="btn label-text radio-button" for="option5"
+              >CNG & Hybrids</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[fuel]"
+              id="option6"
+              autocomplete="off"
+              value="Diesel"
+              required
+            />
+            <label class="btn label-text radio-button" for="option6"
+              >Diesel</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[fuel]"
+              id="option7"
+              autocomplete="off"
+              value="Electric"
+              required
+            />
+            <label class="btn label-text radio-button" for="option7"
+              >Electric</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[fuel]"
+              id="option8"
+              autocomplete="off"
+              value="LGP"
+              required
+            />
+            <label class="btn label-text radio-button" for="option8">LGP</label>
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[fuel]"
+              id="option9"
+              autocomplete="off"
+              value="Petrol"
+              required
+            />
+            <label class="btn label-text radio-button" for="option9"
+              >Petrol</label
+            >
+          </div>
+          <div class="mb-3">
+            <label class="label-text">Transmission *</label><br />
+            <br />
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[transmission]"
+              id="option10"
+              autocomplete="off"
+              value="Automatic"
+              required
+            />
+            <label class="btn label-text radio-button" for="option10"
+              >Automatic</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[transmission]"
+              id="option11"
+              autocomplete="off"
+              value="Manual"
+              required
+            />
+            <label class="btn label-text radio-button" for="option11"
+              >Manual</label
+            >
+          </div>
+          <% } %>
+          <div class="mb-3">
+            <label for="driven" class="form-label">KM driven *</label>
+            <input
+              name="car[driven]"
+              value="<%=car.driven %>"
+              class="form-control"
+              type="number"
+              required
+            />
+            <div class="invalid-feedback size">
+              KM driven is mandatory. Please complete the required field.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="label-text">No. of Owners *</label><br />
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[owners]"
+              id="option12"
+              autocomplete="off"
+              value="1st"
+              required
+            />
+            <label class="btn label-text radio-button" for="option12"
+              >&nbsp;&nbsp;&nbsp;1st&nbsp;&nbsp;&nbsp;</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[owners]"
+              id="option13"
+              autocomplete="off"
+              value="2nd"
+              required
+            />
+            <label class="btn label-text radio-button" for="option13"
+              >&nbsp;2nd&nbsp;</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[owners]"
+              id="option14"
+              autocomplete="off"
+              value="3rd"
+              required
+            />
+            <label class="btn label-text radio-button" for="option14"
+              >&nbsp;&nbsp;3rd&nbsp;&nbsp;</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[owners]"
+              id="option15"
+              autocomplete="off"
+              value="4th"
+              required
+            />
+            <label class="btn label-text radio-button" for="option15"
+              >&nbsp;&nbsp;4th&nbsp;&nbsp;</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              name="car[owners]"
+              id="option16"
+              autocomplete="off"
+              value="4+"
+              required
+            />
+            <label class="btn label-text radio-button" for="option16"
+              >&nbsp;&nbsp;&nbsp;4+&nbsp;&nbsp;&nbsp;</label
+            >
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description *</label>
+            <textarea
+              name="car[description]"
+              class="form-control"
+              rows="4"
+              required
+            >
+<%= car.description %></textarea
+            >
+            <label class="size"
+              >Include condition, features and reason for selling</label
+            >
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price *</label>
+            <input
+              name="car[price]"
+              value="<%=car.price %>"
+              class="form-control"
+              type="number"
+              required
+            />
+            <div class="invalid-feedback size">This field is mandatory</div>
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">UPLOAD PHOTOS *</label>
+            <input
+              name="car[image]"
+              value="<%=car.image %>"
+              class="form-control"
+              type="text"
+            />
+            <label class="size validate">This field is mandatory</label>
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Neighbourhood *</label>
+            <input
+              name="car[neighbourhood]"
+              value="<%=car.neighbourhood %>"
+              class="form-control"
+              type="text"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="city" class="form-label">City *</label>
+            <input
+              name="car[city]"
+              class="form-control"
+              type="text"
+              value="<%=car.city %>"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="state" class="form-label">State </label>
+            <input
+              name="car[state]"
+              value="<%=car.state %>"
+              class="form-control"
+              type="text"
+            />
+            <label class="size validate">This field is mandatory</label>
+          </div>
+          <button class="btn btn-post mb-3">Post now</button>
+        </form>
+        <% } %> <% if(mobile){ %>
+        <form
+          method="POST"
+          action="/items/mobiles/<%=mobile._id%>?_method=PUT"
+          novalidate
+          class="needs-validation"
+        >
+          <input
+            type="hidden"
+            name="mobile[category]"
+            value="<%=mobile.category%>"
+          />
+          <% if(mobile.category=="Mobile phones" || mobile.category=="Tablets"
+          || mobile.category=="Bicycles"){ %>
+          <div class="mb-3">
+            <label for="brand" class="form-label">Brand *</label>
+            <input
+              name="mobile[brand]"
+              value="<%=mobile.brand %>"
+              class="form-control"
+              type="text"
+              required
+            />
+            <div class="invalid-feedback size">
+              Brand is mandatory. Please complete the required field.
+            </div>
+          </div>
+          <% } %>
+          <div class="mb-3">
+            <label for="title" class="form-label">Ad title *</label>
+            <input
+              name="mobile[title]"
+              value="<%=mobile.title %>"
+              class="form-control"
+              type="text"
+              required
+            />
+            <label class="size"
+              >Mention the key features of your item (e.g. brand, model,
+              age,type)</label
+            >
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description *</label>
+            <textarea
+              name="mobile[description]"
+              class="form-control"
+              rows="4"
+              required
+            >
+<%=mobile.description %></textarea
+            >
+            <label class="size"
+              >Include condition, features and reason for selling</label
+            >
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price *</label>
+            <input
+              name="mobile[price]"
+              value="<%=mobile.price %>"
+              class="form-control"
+              type="number"
+              required
+            />
+            <div class="invalid-feedback size">This field is mandatory</div>
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Image *</label>
+            <input
+              name="mobile[image]"
+              value="<%=mobile.image %>"
+              class="form-control"
+              type="text"
+            />
+            <label class="size validate">This field is mandatory</label>
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Neighbourhood *</label>
+            <input
+              name="mobile[neighbourhood]"
+              value="<%=mobile.neighbourhood %>"
+              class="form-control"
+              type="text"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="city" class="form-label">City *</label>
+            <input
+              name="mobile[city]"
+              value="<%=mobile.city %>"
+              class="form-control"
+              type="text"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="state" class="form-label">State </label>
+            <input
+              name="mobile[state]"
+              value="<%=mobile.state %>"
+              class="form-control"
+              type="text"
+            />
+            <label class="size validate">This field is mandatory</label>
+          </div>
+          <button class="btn btn-post mb-3">Post Now</button>
+        </form>
+        <% } %>
+      </span>
+    </div>
+  </div>
+</body>
